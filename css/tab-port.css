@@ -1,0 +1,33 @@
+@media only screen and (min-width: 37.5em) {
+    html {
+        font-size: 62.5%;
+    }
+
+    .layout-main {
+        flex-direction: row;
+    }
+    .layout-main-list {
+        flex: 0 0 50%;
+    }
+
+    .layout-main-form {
+        flex: 0 0 35%;
+        border: 0;
+    }
+
+    .tablist {
+        flex-direction: row;
+    }
+
+    .book {
+        text-align: left;
+    }
+
+    .book-img {
+        justify-content: flex-start;
+    }
+
+    .book-actions {
+        text-align: right;
+    }
+}

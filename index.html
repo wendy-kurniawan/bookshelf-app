@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <title>WK Bookshelf</title>
+        <meta name="theme-color" content="#333333" />
+
+        <link rel="stylesheet" href="css/app.css" />
+        <link
+            rel="stylesheet"
+            href="css/tab-port.css"
+            media="(min-width: 37.5em)"
+        />
+
+        <script src="js/configuration.js" defer></script>
+        <script src="js/storage.js" defer></script>
+        <script src="js/book.js" defer></script>
+        <script src="js/bookshelf.js" defer></script>
+        <script src="js/tab.js" defer></script>
+        <script src="js/app.js" defer></script>
+    </head>
+    <body>
+        <header class="layout-header layout-background">
+            <img src="img/logo.svg" alt="Bookshelf Logo" />
+            <h1><span class="strong">WK</span> <span>Bookshelf</span></h1>
+        </header>
+        <main class="layout-main">
+            <section class="layout-main-list">
+                <h2>Daftar Buku</h2>
+                <form class="form-search" id="search-form" method="POST">
+                    <input
+                        class="form-input"
+                        name="keyword"
+                        type="text"
+                        placeholder="Masukkan Judul Buku"
+                        list="book-titles"
+                        autocomplete="off"
+                    />
+                    <datalist id="book-titles"></datalist>
+                    <button class="btn" type="submit">
+                        <svg width="23" height="23" fill="none">
+                            <path
+                                d="M16.375 14.5h-.988l-.35-.338A8.089 8.089 0 0 0 17 8.875 8.125 8.125 0 0 0 8.875.75 8.125 8.125 0 0 0 .75 8.875 8.125 8.125 0 0 0 8.875 17a8.089 8.089 0 0 0 5.287-1.963l.338.35v.988l6.25 6.238 1.863-1.863-6.238-6.25Zm-7.5 0A5.617 5.617 0 0 1 3.25 8.875 5.617 5.617 0 0 1 8.875 3.25 5.617 5.617 0 0 1 14.5 8.875 5.617 5.617 0 0 1 8.875 14.5Z"
+                                fill="#FEFEFE"
+                            />
+                        </svg>
+                    </button>
+                </form>
+                <section>
+                    <section class="tablist" role="tablist">
+                        <button
+                            class="tablist-tab tablist-tab-is-active"
+                            type="button"
+                            id="tab-uncompleted"
+                            role="tab"
+                            aria-controls="books-uncompleted"
+                            aria-selected="true"
+                        >
+                            Belum Selesai Dibaca
+                            <span class="badge">0</span>
+                        </button>
+                        <button
+                            class="tablist-tab"
+                            type="button"
+                            id="tab-completed"
+                            role="tab"
+                            aria-controls="books-completed"
+                            aria-selected="false"
+                        >
+                            Selesai Dibaca
+                            <span class="badge">0</span>
+                        </button>
+                    </section>
+                    <section
+                        class="tabpanel tabpanel-is-active"
+                        role="tabpanel list"
+                        id="books-uncompleted"
+                        aria-hidden="false"
+                        aria-labelledby="tab-uncompleted"
+                    ></section>
+                    <section
+                        class="tabpanel"
+                        role="tabpanel list"
+                        id="books-completed"
+                        aria-hidden="true"
+                        aria-labelledby="tab-completed"
+                    >
+                        <article class="book" role="listitem">
+                            <div class="book-img">
+                                <div class="book-case"></div>
+                                <div class="book-cover">Book</div>
+                            </div>
+                            <section class="book-description">
+                                <h3 class="book-heading">
+                                    Harry Potter and The Chamber of Secret
+                                </h3>
+                                <p class="book-body">J.K. Rowling</p>
+                                <p class="book-body">2021 year</p>
+                                <div class="book-actions">
+                                    <button
+                                        class="btn btn-icon btn-read-fill"
+                                    ></button>
+                                    <button
+                                        class="btn btn-icon btn-delete"
+                                    ></button>
+                                </div>
+                            </section>
+                        </article>
+                    </section>
+                </section>
+            </section>
+            <section class="layout-main-form">
+                <h2>Form Buku</h2>
+                <form class="form" id="book-form" method="POST">
+                    <div class="form-control">
+                        <label class="form-label" for="title">Judul</label>
+                        <input
+                            class="form-input form-block"
+                            type="text"
+                            id="title"
+                            name="title"
+                            required
+                        />
+                    </div>
+                    <div class="form-control">
+                        <label class="form-label" for="author">Penulis</label>
+                        <input
+                            class="form-input form-block"
+                            type="text"
+                            id="author"
+                            name="author"
+                            required
+                        />
+                    </div>
+                    <div class="form-control">
+                        <label class="form-label" for="year">Tahun</label>
+                        <input
+                            class="form-input form-block"
+                            type="number"
+                            id="year"
+                            name="year"
+                            required
+                        />
+                    </div>
+                    <div class="form-control">
+                        <input
+                            type="checkbox"
+                            name="completed"
+                            id="completed"
+                        />
+                        <label class="form-label" for="completed"
+                            >Selesai dibaca</label
+                        >
+                    </div>
+                    <button class="btn" type="submit">Simpan</button>
+                </form>
+            </section>
+        </main>
+        <footer class="layout-footer layout-background">
+            <p class="copyright">
+                Crafted by <span class="strong">Wendy</span>
+            </p>
+        </footer>
+
+        <div class="dialog dialog-is-hidden">
+            <div class="dialog-content">
+                <header class="dialog-header">
+                    <h2>Apakah anda yakin?</h2>
+                </header>
+                <div class="dialog-body">
+                    <p>
+                        Apabila anda yakin, maka buku yang telah dihapus akan
+                        hilang dari daftar.
+                    </p>
+                </div>
+                <footer class="dialog-footer dialog-actions">
+                    <button class="btn-outline btn-close">Tidak</button>
+                    <button class="btn btn-confirm">Ya, Hapus</button>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
